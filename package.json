@@ -1,0 +1,16 @@
+{
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "Personal Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
