@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "CV Viewer Extension",
+    "version": "1.0",
+    "description": "CV Viewer for Portfolio",
+    "action": {
+      "default_popup": "index.html"
+    },
+    "web_accessible_resources": [{
+    "resources": [
+    "index.html",
+    "src/assets/pages/",
+    "src/assets/styles.css",
+    "src/assets/locales//",
+    "src/assets/resume/",
+    ".js",
+    ".png"
+    ],
+    "matches": ["<all_urls>"],
+    "use_dynamic_url": true
+    }],
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.bundle.js"]
+    }],
+    "permissions": [
+      "activeTab"
+    ]
+}

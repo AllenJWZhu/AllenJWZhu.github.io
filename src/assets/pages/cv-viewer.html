@@ -1,79 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Jiawei (Allen) Zhu</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .cv-container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV - Jiawei (Allen) Zhu (PDF)</title>
+  <style>
+    :root {
+      --background-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #ffffff;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      --transition: all 0.3s ease;
+    }
 
-        .toolbar {
-            background: #f5f5f5;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-        }
+    /* Basic reset + dark background */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--background-color);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+    }
 
-        .back-button {
-            padding: 8px 15px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
+    /* Container for entire layout */
+    .cv-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
 
-        .back-button:hover {
-            background: #0056b3;
-        }
+    /* Toolbar area at top */
+    .toolbar {
+      background: var(--card-bg);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #333;
+    }
 
-        .download-button {
-            padding: 8px 15px;
-            background: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
+    .toolbar .left-buttons {
+      display: flex;
+      gap: 1rem;
+    }
 
-        .download-button:hover {
-            background: #218838;
-        }
+    /* Ghost-style buttons matching your dark theme */
+    .back-button,
+    .download-button {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--secondary-color);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--secondary-color);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .back-button:hover,
+    .download-button:hover {
+      background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transform: translateY(-1px);
+    }
 
-        .cv-frame {
-            flex-grow: 1;
-            width: 100%;
-            border: none;
-        }
-    </style>
+    /* Main area: center the PDF both horizontally + vertically */
+    .cv-content {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: auto; /* Let the container scroll if needed */
+    }
+
+    /* Make the iframe occupy a large portion of the screen */
+    .pdf-wrapper {
+      width: 80vw;   /* 80% of the viewport width */
+      height: 90vh;  /* 90% of the viewport height */
+      display: inline-block;
+    }
+
+    iframe.pdf-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Zoom controls
+    .zoom-controls {
+      display: flex;
+      gap: 1rem;
+    }
+    .zoom-controls button {
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      border: 1px solid var(--accent-color);
+      background: transparent;
+      color: var(--accent-color);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .zoom-controls button:hover {
+      background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transform: translateY(-1px);
+    } */
+  </style>
 </head>
 <body>
-    <div class="cv-container">
-        <div class="toolbar">
-            <a href="/" class="back-button">← Back to Portfolio</a>
-            <a href="../../assets/resume/ResumeJiaweiZhu-20241216-MLD.png" download class="download-button">Download CV</a>
-        </div>
-        <iframe 
-            src="../../assets/resume/ResumeJiaweiZhu-20241216-MLD.png" 
-            class="cv-frame"
-            title="CV Viewer">
-        </iframe>
+  <div class="cv-container">
+    <!-- Top bar with 'Back', 'Download', and zoom controls -->
+    <div class="toolbar">
+      <div class="left-buttons">
+        <a href="/index.html" class="back-button">← Back</a>
+        <!-- PDF file for downloading (be sure PDF is at this location) -->
+        <a 
+          href="/src/assets/resume/ResumeJiaweiZhu-20241216-MLD.pdf"
+          download
+          class="download-button"
+        >
+          Download PDF
+        </a>
+      </div>
+      <!-- <div class="zoom-controls">
+        <button id="zoomOutBtn">Zoom Out</button>
+        <button id="zoomInBtn">Zoom In</button>
+      </div> -->
     </div>
+
+    <!-- Wrapper around the PDF iframe -->
+    <div class="cv-content">
+      <div class="pdf-wrapper">
+        <!-- We'll change the #zoom=XX param dynamically for basic scaling -->
+        <iframe
+          id="pdfIframe"
+          class="pdf-iframe"
+          src=""
+          title="Resume PDF"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Start at 100% scale so the PDF is bigger by default
+    let scale = 1.0;
+    const pdfFilePath = "/src/assets/resume/ResumeJiaweiZhu-20241216-MLD.pdf";
+    const pdfIframe = document.getElementById("pdfIframe");
+
+    function loadPdf() {
+      // The built-in PDF viewer generally expects an integer (e.g., zoom=100).
+      const zoomPercentage = Math.round(scale * 100);
+      pdfIframe.src = `${pdfFilePath}#zoom=${zoomPercentage}`;
+    }
+
+    // Initial load
+    loadPdf();
+
+    // // Zoom In
+    // document.getElementById('zoomInBtn').addEventListener('click', () => {
+    //   scale = Math.min(2.0, scale + 0.1);
+    //   loadPdf();
+    // });
+
+    // // Zoom Out
+    // document.getElementById('zoomOutBtn').addEventListener('click', () => {
+    //   scale = Math.max(0.2, scale - 0.1);
+    //   loadPdf();
+    // });
+  </script>
 </body>
 </html>
