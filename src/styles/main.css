@@ -72,6 +72,14 @@ body::before {
     image-rendering: crisp-edges;
 }
 
+.icon-inline {
+    display: inline-block;
+    height: 1em;        /* or 1.2em, depending on how large you want it */
+    width: auto;        /* keep aspect ratio */
+    vertical-align: middle; /* align with the text baseline */
+    margin-left: 0.3rem; /* a little space between text and icon */
+}
+
 /* Navigation */
 .navbar {
     width: 100%;
@@ -201,6 +209,28 @@ html {
     transition: var(--transition);
     box-shadow: var(--shadow);
 }
+
+.projects-button {
+    display: inline-block;
+    margin-left: 1rem;                /* Spacing between the last interest tag */
+    padding: 0.6rem 1.2rem;          /* Adjust for desired size */
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--transition);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Hover/focus styling */
+  .projects-button:hover,
+  .projects-button:focus {
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transform: translateY(-1px);
+  }
 
 /* About Me Section Styling */
 .about-me-section {
