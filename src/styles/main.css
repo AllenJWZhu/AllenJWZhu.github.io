@@ -617,6 +617,11 @@ html {
     margin-bottom: 1rem;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .company-logo img,
 .institution-logo img {
     width: 60px;
@@ -1497,4 +1502,10 @@ footer {
     h1 { font-size: 1.8rem; }
     h2 { font-size: 1.5rem; }
     .subtitle { font-size: 0.9rem; }
+  }
+
+  @media screen and (max-width: 768px) {
+    html {
+      font-size: 14px; /* Slightly smaller base font size on mobile */
+    }
   }

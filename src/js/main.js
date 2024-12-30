@@ -208,26 +208,52 @@ export default ScrollIndicator;
 
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu functionality
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
 
-  menuToggle?.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.navbar')) {
-      navLinks.classList.remove('active');
-    }
-  });
-
-  // Close menu when clicking a link
-  navLinks?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
+  if (menuToggle && navLinks) {
+    // Toggle menu when button is clicked
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent click from immediately closing menu
+      navLinks.classList.toggle('active');
+      
+      // Optionally change icon
+      const icon = menuToggle.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      }
     });
-  });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.navbar')) {
+        navLinks.classList.remove('active');
+        
+        // Reset icon
+        const icon = menuToggle.querySelector('i');
+        if (icon) {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      }
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        
+        // Reset icon
+        const icon = menuToggle.querySelector('i');
+        if (icon) {
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  }
 });
 
 window.addEventListener('scroll', revealOnScroll);
