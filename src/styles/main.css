@@ -1391,3 +1391,110 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color);
 }
+
+/* Your existing CSS remains, then add these media queries at the bottom: */
+
+/* Tablets and smaller laptops */
+@media screen and (max-width: 1024px) {
+    /* Adjust section padding */
+    .section-container {
+      padding: 2rem;
+    }
+  
+    /* Make hero section more compact */
+    .hero-content {
+      padding: 2rem;
+    }
+  
+    /* Adjust grid layouts */
+    .project-grid,
+    .experience-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns instead of 3 */
+      gap: 1.5rem;
+    }
+  }
+  
+  /* Mobile devices */
+  @media screen and (max-width: 768px) {
+    /* Hide vertical nav on mobile */
+    .vertical-nav {
+      display: none;
+    }
+  
+    /* Adjust top navigation */
+    .navbar {
+      padding: 1rem;
+    }
+  
+    /* Make nav links vertical on mobile when menu is open */
+    .nav-links {
+      position: fixed;
+      top: 60px; /* adjust based on your navbar height */
+      left: 0;
+      right: 0;
+      background: var(--background-color);
+      flex-direction: column;
+      padding: 1rem;
+      display: none; /* Initially hidden, shown when menu is active */
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    /* Add hamburger menu */
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+    }
+  
+    /* Hero section adjustments */
+    .hero-main {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+  
+    .profile-photo {
+      width: 200px; /* smaller photo on mobile */
+      margin: 0 auto;
+    }
+  
+    /* Social links and CV/Projects buttons */
+    .social-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+  
+    /* Make projects and experience single column */
+    .project-grid,
+    .experience-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    /* Adjust form width */
+    .contact-form {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+  
+  /* Very small devices */
+  @media screen and (max-width: 480px) {
+    /* Further reduce padding */
+    .section-container {
+      padding: 1rem;
+    }
+  
+    /* Make buttons more touch-friendly */
+    .cv-link,
+    .social-link {
+      padding: 0.8rem;
+    }
+  
+    /* Adjust font sizes */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    .subtitle { font-size: 0.9rem; }
+  }
