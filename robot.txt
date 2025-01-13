@@ -1,0 +1,47 @@
+# Global rules for all robots
+User-agent: *
+# Allow crawling of all content by default
+Allow: /
+# Allow specific asset directories
+Allow: /src/assets/images/
+Allow: /src/styles/
+Allow: /src/js/
+
+# Protect sensitive content
+Disallow: /src/assets/pages/cv-viewer.html
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /*?*
+Disallow: /*?
+Disallow: /*/wp-admin/
+Disallow: /*/wp-includes/
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Crawl-delay: 1
+
+# Block known malicious bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Add your sitemap location
+Sitemap: https://allenjwzhu.github.io/sitemap.xml
+
+# Crawl-delay is in seconds
+Crawl-delay: 10
+
+# Host preference (uncomment and modify when you have a preferred domain)
+# Host: www.jiaweizhu.com
